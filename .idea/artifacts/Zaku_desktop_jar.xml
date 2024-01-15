@@ -1,0 +1,49 @@
+<component name="ArtifactManager">
+  <artifact name="Zaku_desktop:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Zaku_desktop_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Zaku_desktop.jar">
+        <element id="module-output" name="Zaku_desktop" />
+      </element>
+      <element id="library" level="project" name="Maven: com.github.almasb:fxgl-core:17.3" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.14.2" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:21" />
+      <element id="library" level="project" name="Maven: org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0" />
+      <element id="library" level="project" name="Maven: org.controlsfx:controlsfx:11.1.2" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-web:linux:21" />
+      <element id="library" level="project" name="Maven: com.dlsc.formsfx:formsfx-core:11.6.0" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.14.2" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:linux:21" />
+      <element id="library" level="project" name="Maven: com.github.almasb:fxgl:17.3" />
+      <element id="library" level="project" name="Maven: com.gluonhq.attach:audio:4.0.17" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:21" />
+      <element id="library" level="project" name="Maven: com.gluonhq.attach:lifecycle:4.0.17" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:21" />
+      <element id="library" level="project" name="Maven: net.synedra:validatorfx:0.4.0" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-swing:21" />
+      <element id="library" level="project" name="Maven: com.github.almasb:fxgl-io:17.3" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:21" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:linux:21" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-media:linux:21" />
+      <element id="library" level="project" name="Maven: com.github.almasb:fxgl-scene:17.3" />
+      <element id="library" level="project" name="Maven: org.jetbrains:annotations:13.0" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-web:21" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-media:21" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.14.2" />
+      <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-swing:linux:21" />
+      <element id="library" level="project" name="Maven: org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:linux:21" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:linux:21" />
+      <element id="library" level="project" name="Maven: com.gluonhq.attach:storage:4.0.17" />
+      <element id="library" level="project" name="Maven: com.github.almasb:fxgl-entity:17.3" />
+      <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-core:12.3.1" />
+      <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-javafx:12.3.1" />
+      <element id="library" level="project" name="Maven: com.gluonhq.attach:util:4.0.17" />
+      <element id="library" level="project" name="Maven: com.fazecast:jSerialComm:2.10.4" />
+      <element id="library" level="project" name="Maven: eu.hansolo:tilesfx:11.48" />
+      <element id="library" level="project" name="Maven: com.github.almasb:fxgl-gameplay:17.3" />
+      <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.8.10" />
+    </root>
+  </artifact>
+</component>
