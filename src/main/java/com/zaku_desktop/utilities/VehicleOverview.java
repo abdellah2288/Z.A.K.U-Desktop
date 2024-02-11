@@ -7,6 +7,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 public class VehicleOverview
 {
     static private  double canvasWidth = 400;
@@ -159,12 +161,28 @@ public class VehicleOverview
     {
         drawComponent(compName,compID,Double.valueOf(value) > 0);
     }
+    static public void updateComponent(String compName,int compID,char value)
+    {
+        drawComponent(compName,compID,value > '0');
+    }
+    static public void updateComponent(String compName,int compID,String value,double floor,double ceiling)
+    {
+        drawComponent(compName,compID,Double.valueOf(value) < ceiling && Double.valueOf(value) > floor);
+    }
     static public void updateUS(int usID,String value)
     {
-        updateComponent("us",usID,value);
+        updateComponent("us",usID,value,-1,20.0);
     }
     static public void updateWheel(int wheelID,String value)
     {
         updateComponent("wheel",wheelID,value);
+    }
+    static public void updateIRarray(String readings)
+    {
+        char[] charArray = readings.toCharArray();
+        for(int i = 0; i< charArray.length - 1; i++)
+        {
+            updateComponent("ir",i,charArray[i]);
+        }
     }
 }

@@ -53,7 +53,7 @@ public class MqttManager implements MqttCallback
         }
     }
 
-    private void connect()
+    public void connect()
     {
         try
         {
@@ -79,6 +79,10 @@ public class MqttManager implements MqttCallback
         {
             System.out.println(e.getCause());
         }
+    }
+    public void addTopic(String topic,String defaultValue)
+    {
+        mqttMap.put(topic,defaultValue);
     }
     public void subscribeToTopics()
     {

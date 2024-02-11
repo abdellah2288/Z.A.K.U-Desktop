@@ -49,6 +49,12 @@ public abstract class Sensor
             sensorValues.put(key[3], manager.getTopicData(key[2]));
         }
     }
+    public Map<String, String> getSensorValues()
+    {
+
+        return sensorValues;
+    }
+
     public abstract Node generateTile();
     public abstract void updateTile(MqttManager manager);
     static public Node generateCluster(int clusterWidth,Object[] sensorArray)

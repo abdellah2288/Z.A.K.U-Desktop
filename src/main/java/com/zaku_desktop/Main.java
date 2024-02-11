@@ -3,16 +3,13 @@ package com.zaku_desktop;
 import com.zaku_desktop.actuators.Actuator;
 import com.zaku_desktop.actuators.DCmotor;
 import com.zaku_desktop.actuators.Servo;
-import com.zaku_desktop.sensors.USsensor;
-import com.zaku_desktop.utilities.ConfigManager;
-import com.zaku_desktop.sensors.DHTS;
-import com.zaku_desktop.sensors.Sensor;
-import com.zaku_desktop.utilities.MqttManager;
-import com.zaku_desktop.utilities.VehicleOverview;
+import com.zaku_desktop.sensors.*;
+import com.zaku_desktop.utilities.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Orientation;
 
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
@@ -54,25 +51,26 @@ public class Main extends Application {
     public  void start(Stage mainStage)
     {
         try {
-            sensorList = new Sensor[] {new DHTS() ,new USsensor(), new USsensor(),new USsensor(),new USsensor()};
+            sensorList = new Sensor[] {new DHTS(), new MQx(135), new MQx(2) ,new USsensor(), new USsensor(),new USsensor(),new USsensor()};
             actuatorList = new Actuator[] {new DCmotor() ,new DCmotor(),new Servo()};
             topBar = generateMenu();
-
-            Stage camStage = new Stage();
-            FlowPane camPane = new FlowPane();
-            WebView camView = new WebView();
-            camView.getEngine().load("http://192.168.12.147/");
-            camPane.getChildren().add(camView);
-            camStage.setScene(new Scene(camPane));
-            camStage.show();
+            VBox middleBox = new VBox();
+            middleBox.setAlignment(Pos.BASELINE_CENTER);
+            middleBox.setAlignment(Pos.CENTER);
+            ChartGenerator.addSensor(sensorList[1]);
+            ChartGenerator.addSensor(sensorList[2]);
+            middleBox.getChildren().add(VehicleOverview.generateOverview());
+            middleBox.getChildren().add(ChartGenerator.getMainChart());
             MqttManager mainMqttManager = new MqttManager(sensorList,actuatorList);
+            mainMqttManager.addTopic(IRarray.getIRtopic(),IRarray.getLatestReading());
 
             mainStage.setScene(new Scene(new BorderPane(), Color.rgb(250, 250, 250)));
-
-            ((BorderPane) mainStage.getScene().getRoot()).setTop(topBar);
+            mainStage.getIcons().add(MiscUtils.getImage("appIcon.png"));
+            mainStage.setTitle("ZAKU desktop");
+            //((BorderPane) mainStage.getScene().getRoot()).setTop(topBar);
             ((BorderPane) mainStage.getScene().getRoot()).setRight(dashBoard);
             ((BorderPane) mainStage.getScene().getRoot()).setLeft(ConfigManager.generateSettings(sensorList));
-            ((BorderPane) mainStage.getScene().getRoot()).setCenter(VehicleOverview.generateOverview());
+            ((BorderPane) mainStage.getScene().getRoot()).setCenter(middleBox);
             ((BorderPane) mainStage.getScene().getRoot()).setBottom(mainMqttManager.generateMqttBar());
 
             mainMqttManager.initMqtt(ConfigManager.getConfigMap(sensorList).get("mqtt_broker_uri"));
@@ -109,6 +107,8 @@ public class Main extends Application {
 
             mainStage.setMinWidth(mainStage.getWidth());
             mainStage.setMinHeight(mainStage.getHeight());
+
+            CSVgenerator.initGenerator(sensorList);
             new Thread(() ->
             {
                 while(true)
@@ -125,6 +125,7 @@ public class Main extends Application {
 
                                         if(mainMqttManager.getConnectionStatus())
                                         {
+
                                             for(Actuator actuator : actuatorList)
                                             {
                                                 actuator.publishControls(mainMqttManager);
@@ -136,7 +137,12 @@ public class Main extends Application {
                                             {
                                                 if(sensor instanceof USsensor) VehicleOverview.updateUS(((USsensor) sensor).id,((USsensor) sensor).getDistance());
                                                 sensor.updateTile(mainMqttManager);
+
                                             }
+                                            ChartGenerator.updateChart();
+                                            IRarray.getIRdata(mainMqttManager);
+                                            VehicleOverview.updateIRarray(IRarray.getLatestReading());
+                                            CSVgenerator.updateGenerator();
                                         }
                                 }
                             }

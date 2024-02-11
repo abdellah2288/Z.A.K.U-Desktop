@@ -171,4 +171,8 @@ public class ConfigManager
         }
         return confMap;
     }
+    static public String getConfigEntry(String entry)
+    {
+        return parsedConfig.get(entry);
+    }
 }
