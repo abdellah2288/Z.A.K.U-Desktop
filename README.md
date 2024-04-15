@@ -1,4 +1,4 @@
-Zaku Desktop is a versatile application designed to interface with the [Zaku robot][https://github.com/abdellah2288/Zaku-IDF], providing users with comprehensive diagnostics and real-time sensor data visualization. With a user-friendly interface, Zaku Desktop allows users to monitor various parameters such as motor status, battery voltage, and environmental sensor readings.
+Zaku Desktop is a versatile application designed to interface with the [https://github.com/abdellah2288/Zaku-IDF Zaku robot], providing users with comprehensive diagnostics and real-time sensor data visualization. With a user-friendly interface, Zaku Desktop allows users to monitor various parameters such as motor status, battery voltage, and environmental sensor readings.
 
 ![image](https://github.com/abdellah2288/Z.A.K.U-Desktop/assets/123770144/cc0dc611-739a-4879-bac1-3bf685a27619)
 ![image](https://github.com/abdellah2288/Z.A.K.U-Desktop/assets/123770144/cb6ef1ab-2264-4d05-8a39-56abb5bbc21b)
